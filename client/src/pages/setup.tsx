@@ -164,9 +164,9 @@ export default function Setup() {
   };
 
   return (
-    <div className="min-h-screen bg-ios-bg">
+    <div className="min-h-screen bg-ios-bg dark:bg-ios-bg">
       {/* Status Bar */}
-      <div className="flex justify-between items-center px-6 pt-3 pb-1 text-ios-text text-sm font-semibold">
+      <div className="flex justify-between items-center px-6 pt-3 pb-1 text-ios-text dark:text-ios-text text-sm font-semibold">
         <span>9:41</span>
         <div className="flex items-center space-x-1">
           <i className="fas fa-signal text-xs"></i>
@@ -195,8 +195,8 @@ export default function Setup() {
           <div>
             <div className="text-center mb-6">
               <Leaf className="w-16 h-16 mx-auto mb-4 text-ios-green" />
-              <h1 className="text-2xl font-bold text-ios-text mb-2">Set Up Bag Types</h1>
-              <p className="text-ios-secondary">Define the types of bags you use and their prices</p>
+              <h1 className="text-2xl font-bold text-ios-text dark:text-ios-text mb-2">Set Up Bag Types</h1>
+              <p className="text-ios-secondary dark:text-ios-secondary">Define the types of bags you use and their prices</p>
             </div>
 
             <Card className="ios-card rounded-ios-lg shadow-sm mb-6">
@@ -264,7 +264,7 @@ export default function Setup() {
                 <CardContent>
                   <div className="space-y-3">
                     {bagTypes.map((type, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-ios-bg rounded-ios">
+                      <div key={index} className="flex items-center justify-between p-3 bg-ios-muted dark:bg-ios-muted rounded-ios">
                         <div className="flex items-center space-x-3">
                           <div 
                             className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -272,7 +272,7 @@ export default function Setup() {
                           >
                             {type.icon === "leaf" ? <Leaf className="w-4 h-4 text-white" /> : <ShoppingBag className="w-4 h-4 text-white" />}
                           </div>
-                          <span className="font-medium text-ios-text">{type.name}</span>
+                          <span className="font-medium text-ios-text dark:text-ios-text">{type.name}</span>
                         </div>
                         <span className="text-ios-green font-semibold">${type.pricePerBag}</span>
                       </div>
@@ -296,8 +296,8 @@ export default function Setup() {
           <div>
             <div className="text-center mb-6">
               <Car className="w-16 h-16 mx-auto mb-4 text-ios-blue" />
-              <h1 className="text-2xl font-bold text-ios-text mb-2">Add Your Cars</h1>
-              <p className="text-ios-secondary">Track bag inventory for each of your vehicles</p>
+              <h1 className="text-2xl font-bold text-ios-text dark:text-ios-text mb-2">Add Your Cars</h1>
+              <p className="text-ios-secondary dark:text-ios-secondary">Track bag inventory for each of your vehicles</p>
             </div>
 
             <Card className="ios-card rounded-ios-lg shadow-sm mb-6">
@@ -353,14 +353,14 @@ export default function Setup() {
                 <CardContent>
                   <div className="space-y-3">
                     {cars.map((car, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-ios-bg rounded-ios">
+                      <div key={index} className="flex items-center justify-between p-3 bg-ios-muted dark:bg-ios-muted rounded-ios">
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-gradient-to-br from-ios-blue to-blue-600 rounded-xl flex items-center justify-center">
                             <Car className="w-5 h-5 text-white" />
                           </div>
                           <div>
-                            <span className="font-medium text-ios-text">{car.name}</span>
-                            {car.model && <p className="text-sm text-ios-secondary">{car.model}</p>}
+                            <span className="font-medium text-ios-text dark:text-ios-text">{car.name}</span>
+                            {car.model && <p className="text-sm text-ios-secondary dark:text-ios-secondary">{car.model}</p>}
                           </div>
                         </div>
                       </div>
@@ -386,8 +386,8 @@ export default function Setup() {
               <div className="w-16 h-16 mx-auto mb-4 bg-ios-green rounded-full flex items-center justify-center">
                 <span className="text-2xl">🎉</span>
               </div>
-              <h1 className="text-2xl font-bold text-ios-text mb-2">You're All Set!</h1>
-              <p className="text-ios-secondary">Ready to start tracking your environmental impact</p>
+              <h1 className="text-2xl font-bold text-ios-text dark:text-ios-text mb-2">You're All Set!</h1>
+              <p className="text-ios-secondary dark:text-ios-secondary">Ready to start tracking your environmental impact</p>
             </div>
 
             <Card className="ios-card rounded-ios-lg shadow-sm mb-6">
@@ -397,19 +397,19 @@ export default function Setup() {
                     <div className="w-8 h-8 bg-ios-green rounded-full flex items-center justify-center">
                       <span className="text-white text-sm">✓</span>
                     </div>
-                    <span className="text-ios-text">Bag types configured</span>
+                    <span className="text-ios-text dark:text-ios-text">Bag types configured</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-ios-green rounded-full flex items-center justify-center">
                       <span className="text-white text-sm">✓</span>
                     </div>
-                    <span className="text-ios-text">Cars added</span>
+                    <span className="text-ios-text dark:text-ios-text">Cars added</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 bg-ios-secondary bg-opacity-30 rounded-full flex items-center justify-center">
                       <span className="text-ios-secondary text-sm">•</span>
                     </div>
-                    <span className="text-ios-secondary">Optional: Add locations for reminders</span>
+                    <span className="text-ios-secondary dark:text-ios-secondary">Optional: Add locations for reminders</span>
                   </div>
                 </div>
               </CardContent>
