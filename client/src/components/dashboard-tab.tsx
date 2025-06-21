@@ -69,11 +69,11 @@ export default function DashboardTab({ onAddCar }: DashboardTabProps) {
     return (
       <div className="px-6 py-8">
         <div className="animate-pulse space-y-6">
-          <div className="h-48 bg-gray-200 rounded-ios-lg"></div>
+          <div className="h-48 bg-ios-muted dark:bg-ios-muted rounded-ios-lg"></div>
           <div className="grid grid-cols-3 gap-3">
-            <div className="h-20 bg-gray-200 rounded-ios"></div>
-            <div className="h-20 bg-gray-200 rounded-ios"></div>
-            <div className="h-20 bg-gray-200 rounded-ios"></div>
+            <div className="h-20 bg-ios-muted dark:bg-ios-muted rounded-ios"></div>
+            <div className="h-20 bg-ios-muted dark:bg-ios-muted rounded-ios"></div>
+            <div className="h-20 bg-ios-muted dark:bg-ios-muted rounded-ios"></div>
           </div>
         </div>
       </div>

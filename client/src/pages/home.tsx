@@ -95,9 +95,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-ios-bg">
+    <div className="min-h-screen bg-ios-bg dark:bg-ios-bg">
       {/* Status Bar */}
-      <div className="flex justify-between items-center px-6 pt-3 pb-1 text-ios-text text-sm font-semibold">
+      <div className="flex justify-between items-center px-6 pt-3 pb-1 text-ios-text dark:text-ios-text text-sm font-semibold">
         <span>9:41</span>
         <div className="flex items-center space-x-1">
           <i className="fas fa-signal text-xs"></i>

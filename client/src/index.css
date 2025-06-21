@@ -24,37 +24,51 @@
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
   
-  /* iOS-specific colors */
-  --ios-green: hsl(146, 68%, 55%);
-  --ios-blue: hsl(207, 100%, 50%);
-  --ios-orange: hsl(32, 100%, 50%);
-  --ios-success: hsl(147, 81%, 59%);
-  --ios-bg: hsl(237, 9%, 97%);
+  /* Calm, accessible color palette */
+  --ios-green: hsl(142, 71%, 45%);
+  --ios-blue: hsl(213, 94%, 68%);
+  --ios-orange: hsl(37, 90%, 60%);
+  --ios-success: hsl(145, 63%, 49%);
+  --ios-bg: hsl(210, 40%, 98%);
   --ios-card: hsl(0, 0%, 100%);
-  --ios-text: hsl(0, 0%, 11%);
-  --ios-secondary: hsl(240, 2%, 58%);
+  --ios-text: hsl(210, 22%, 22%);
+  --ios-secondary: hsl(210, 14%, 53%);
+  --ios-muted: hsl(210, 40%, 94%);
+  --ios-accent: hsl(213, 94%, 68%);
 }
 
 .dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
+  --background: hsl(222, 84%, 5%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(217, 32%, 17%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --popover: hsl(222, 84%, 5%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(222, 84%, 5%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(217, 32%, 17%);
+  --input: hsl(217, 32%, 17%);
+  --primary: hsl(213, 94%, 68%);
+  --primary-foreground: hsl(222, 84%, 5%);
+  --secondary: hsl(217, 32%, 17%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(217, 32%, 17%);
+  --accent-foreground: hsl(210, 40%, 98%);
   --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(212, 92%, 75%);
+  
+  /* Dark mode calm colors */
+  --ios-green: hsl(142, 71%, 55%);
+  --ios-blue: hsl(213, 94%, 75%);
+  --ios-orange: hsl(37, 90%, 70%);
+  --ios-success: hsl(145, 63%, 59%);
+  --ios-bg: hsl(222, 84%, 5%);
+  --ios-card: hsl(217, 32%, 8%);
+  --ios-text: hsl(210, 40%, 98%);
+  --ios-secondary: hsl(215, 20%, 65%);
+  --ios-muted: hsl(217, 32%, 17%);
+  --ios-accent: hsl(213, 94%, 75%);
 }
 
 @layer base {
@@ -109,6 +123,8 @@
   .text-ios-success { color: var(--ios-success); }
   .text-ios-text { color: var(--ios-text); }
   .text-ios-secondary { color: var(--ios-secondary); }
+  .text-ios-muted { color: var(--ios-muted); }
+  .text-ios-accent { color: var(--ios-accent); }
   
   .bg-ios-bg { background-color: var(--ios-bg); }
   .bg-ios-card { background-color: var(--ios-card); }
@@ -117,12 +133,28 @@
   .bg-ios-orange { background-color: var(--ios-orange); }
   .bg-ios-success { background-color: var(--ios-success); }
   .bg-ios-secondary { background-color: var(--ios-secondary); }
+  .bg-ios-muted { background-color: var(--ios-muted); }
+  .bg-ios-accent { background-color: var(--ios-accent); }
   
   .border-ios-green { border-color: var(--ios-green); }
   .border-ios-blue { border-color: var(--ios-blue); }
   .border-ios-orange { border-color: var(--ios-orange); }
   .border-ios-secondary { border-color: var(--ios-secondary); }
+  .border-ios-muted { border-color: var(--ios-muted); }
+  .border-ios-accent { border-color: var(--ios-accent); }
   
   .rounded-ios { border-radius: 12px; }
   .rounded-ios-lg { border-radius: 16px; }
+  
+  /* Better button styling */
+  .ios-button {
+    @apply font-medium;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Card improvements */
+  .ios-card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--ios-muted);
+  }
 }

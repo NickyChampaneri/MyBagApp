@@ -8,7 +8,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-ios-green to-emerald-400 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-ios-green to-emerald-500 text-white dark:from-ios-green dark:to-emerald-600">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-6 pt-3 pb-1 text-sm font-semibold opacity-90">
         <span>9:41</span>
