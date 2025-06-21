@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* iOS-specific colors */
+  --ios-green: hsl(146, 68%, 55%);
+  --ios-blue: hsl(207, 100%, 50%);
+  --ios-orange: hsl(32, 100%, 50%);
+  --ios-success: hsl(147, 81%, 59%);
+  --ios-bg: hsl(237, 9%, 97%);
+  --ios-card: hsl(0, 0%, 100%);
+  --ios-text: hsl(0, 0%, 11%);
+  --ios-secondary: hsl(240, 2%, 58%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-ios-bg text-ios-text;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .ios-card {
+    @apply bg-ios-card;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .ios-button {
+    transition: all 0.15s ease;
+  }
+  
+  .ios-button:active {
+    transform: scale(0.95);
+  }
+  
+  .tab-indicator {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .tab-button.active {
+    color: var(--ios-blue);
+  }
+  
+  .tab-button:not(.active) {
+    color: var(--ios-secondary);
+  }
+
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+}
+
+@layer utilities {
+  .text-ios-green { color: var(--ios-green); }
+  .text-ios-blue { color: var(--ios-blue); }
+  .text-ios-orange { color: var(--ios-orange); }
+  .text-ios-success { color: var(--ios-success); }
+  .text-ios-text { color: var(--ios-text); }
+  .text-ios-secondary { color: var(--ios-secondary); }
+  
+  .bg-ios-bg { background-color: var(--ios-bg); }
+  .bg-ios-card { background-color: var(--ios-card); }
+  .bg-ios-green { background-color: var(--ios-green); }
+  .bg-ios-blue { background-color: var(--ios-blue); }
+  .bg-ios-orange { background-color: var(--ios-orange); }
+  .bg-ios-success { background-color: var(--ios-success); }
+  .bg-ios-secondary { background-color: var(--ios-secondary); }
+  
+  .border-ios-green { border-color: var(--ios-green); }
+  .border-ios-blue { border-color: var(--ios-blue); }
+  .border-ios-orange { border-color: var(--ios-orange); }
+  .border-ios-secondary { border-color: var(--ios-secondary); }
+  
+  .rounded-ios { border-radius: 12px; }
+  .rounded-ios-lg { border-radius: 16px; }
+}
