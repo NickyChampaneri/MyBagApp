@@ -26,15 +26,15 @@
   
   /* Calm, accessible color palette */
   --ios-green: hsl(142, 71%, 45%);
-  --ios-blue: hsl(213, 94%, 68%);
+  --ios-blue: hsl(213, 94%, 58%);
   --ios-orange: hsl(37, 90%, 60%);
   --ios-success: hsl(145, 63%, 49%);
-  --ios-bg: hsl(210, 40%, 98%);
-  --ios-card: hsl(0, 0%, 100%);
-  --ios-text: hsl(210, 22%, 22%);
-  --ios-secondary: hsl(210, 14%, 53%);
-  --ios-muted: hsl(210, 40%, 94%);
-  --ios-accent: hsl(213, 94%, 68%);
+  --ios-bg: hsl(220, 30%, 92%);
+  --ios-card: hsl(220, 20%, 97%);
+  --ios-text: hsl(220, 25%, 12%);
+  --ios-secondary: hsl(220, 15%, 40%);
+  --ios-muted: hsl(220, 25%, 85%);
+  --ios-accent: hsl(213, 94%, 58%);
 }
 
 .dark {
