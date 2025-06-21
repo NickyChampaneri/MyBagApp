@@ -25,7 +25,7 @@ function Router() {
     <Switch>
       {!isAuthenticated ? (
         <Route path="/" component={Landing} />
-      ) : user && !user.hasCompletedSetup ? (
+      ) : user && !user?.hasCompletedSetup ? (
         <Route path="/" component={Setup} />
       ) : (
         <>

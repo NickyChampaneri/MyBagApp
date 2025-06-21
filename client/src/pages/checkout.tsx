@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Crown, Users, MapPin, TrendingUp } from "lucide-react";
 
-if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
-  throw new Error('Missing required Stripe key: VITE_STRIPE_PUBLIC_KEY');
-}
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+// Initialize Stripe only if public key is available
+const stripePromise = import.meta.env.VITE_STRIPE_PUBLIC_KEY 
+  ? loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+  : null;
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -66,8 +66,11 @@ const CheckoutForm = () => {
 
 export default function Checkout() {
   const [clientSecret, setClientSecret] = useState("");
+  const [isConfigured, setIsConfigured] = useState(!!import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
   useEffect(() => {
+    if (!isConfigured) return;
+    
     apiRequest("POST", "/api/create-payment-intent")
       .then((res) => res.json())
       .then((data) => {
@@ -75,8 +78,53 @@ export default function Checkout() {
       })
       .catch((error) => {
         console.error("Error creating payment intent:", error);
+        setIsConfigured(false);
       });
-  }, []);
+  }, [isConfigured]);
+
+  if (!isConfigured) {
+    return (
+      <div className="min-h-screen bg-ios-bg">
+        {/* Status Bar */}
+        <div className="flex justify-between items-center px-6 pt-3 pb-1 text-ios-text text-sm font-semibold">
+          <span>9:41</span>
+          <div className="flex items-center space-x-1">
+            <i className="fas fa-signal text-xs"></i>
+            <i className="fas fa-wifi text-xs"></i>
+            <i className="fas fa-battery-full text-xs"></i>
+          </div>
+        </div>
+
+        <div className="max-w-sm mx-auto px-6 py-8">
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-r from-ios-blue to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Crown className="w-8 h-8 text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-ios-text mb-2">Payment Setup Required</h1>
+            <p className="text-ios-secondary">Payment processing is not yet configured</p>
+          </div>
+
+          <Card className="ios-card rounded-ios-lg shadow-sm mb-6">
+            <CardContent className="p-6 text-center">
+              <p className="text-ios-text mb-4">
+                Payment functionality will be available once Stripe credentials are configured.
+              </p>
+              <p className="text-sm text-ios-secondary">
+                For now, you can explore all the bag tracking features without payment.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Button 
+            onClick={() => window.history.back()}
+            className="w-full ios-button"
+          >
+            Back to App
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   if (!clientSecret) {
     return (
@@ -158,9 +206,15 @@ export default function Checkout() {
             <CardTitle className="text-lg">Payment Details</CardTitle>
           </CardHeader>
           <CardContent>
-            <Elements stripe={stripePromise} options={{ clientSecret }}>
-              <CheckoutForm />
-            </Elements>
+            {stripePromise ? (
+              <Elements stripe={stripePromise} options={{ clientSecret }}>
+                <CheckoutForm />
+              </Elements>
+            ) : (
+              <div className="text-center py-4">
+                <p className="text-ios-secondary">Payment processing not available</p>
+              </div>
+            )}
           </CardContent>
         </Card>
 

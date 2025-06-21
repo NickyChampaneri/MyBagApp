@@ -10,13 +10,13 @@ import {
   insertBagUsageSchema 
 } from "@shared/schema";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('Missing required Stripe secret: STRIPE_SECRET_KEY');
+// Initialize Stripe only if credentials are available
+let stripe: Stripe | null = null;
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2025-05-28.basil",
+  });
 }
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2023-10-16",
-});
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
@@ -49,6 +49,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Stripe payment route for one-time payment
   app.post("/api/create-payment-intent", isAuthenticated, async (req: any, res) => {
     try {
+      if (!stripe) {
+        return res.status(503).json({ message: "Payment processing not configured" });
+      }
       const amount = 299; // $2.99 in cents
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
@@ -65,6 +68,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Stripe webhook to handle successful payments
   app.post("/api/stripe/webhook", async (req, res) => {
+    if (!stripe) {
+      return res.status(503).json({ message: "Payment processing not configured" });
+    }
+    
     const sig = req.headers['stripe-signature'];
     let event;
 
